@@ -1,0 +1,1519 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>HighLevel</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="format-detection" content="telephone=no">
+  <!--Main Styles (compiled & minified by GulpJS)-->
+  <link rel="stylesheet" type="text/css" href="./css/styles.min.css">
+  <!-- Dependency Scripts (jQuery v3.1.1 & Bootstrap v4 beta 3) -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
+  <!-- Plugins & Custom Scripts (concatenated and minified by GulpJS) -->
+  <script src="./js/scripts.min.js"></script>
+  <!-- HighChart Scripts -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/funnel.js"></script>
+  <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+  <!-- FullCalendar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css">
+  <!-- FontAwesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+  <!--Favicons-->
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+  <link rel="manifest" href="./favicons/site.webmanifest">
+  <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#777777">
+  <link rel="shortcut icon" href="./favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="./favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+  <nav class="hl_navbar shrink" id="navbar">
+    <div class="hl_navbar--inner">
+      <a href="./" class="hl_navbar--logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="26">
+          <image width="28" height="26" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAADeCAMAAAAjD+0vAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACKFBMVEUAAAD/vAD/vAD/vAA3yjc3yjc3yjf/vAD/vAA3yjc3yjf/vAD/vAD/vAA3yjc3yjf/vAD/vAD+uwH5twT/vAD/vAA3yjc3yjc3yjc2yDY1xjU3yjf/vADjqAs3yjc0uDQYi/YYi/b6uAI2xjb/vAA3yjcYi/YYi/YYi/YYi/bUsy0xvlrzug0Yi/YXgOgWddo1x0EYi/YWddkXd9z/vAA3yjfzrg/xrBEquycpuiX8uQPupxbqoxszxTIktB8isRz9ugLvqRQ0xzMltSH+uwHwqxI1yDUmtiL/vAHyrRA2yTUouCT0sA02yjYpuib2sgvqpBorvCj4tAnrpBouvyv5tgfrpRkvwS0jsh77twXsphgxwzAjsx7tpxczxTHvqRU0xjMltCDwqhM1yDT/uwDxrRE2yDUouCP0rw42yTYpuSX2sQz3tAotvir5tQcvwC0jsh3spRkxwy8yxDEjtB/uqBU0xjIltSD+ugI1xzQmtiEntyMouSX1sQz3swotvin5tQjrpBkuwCz6tgYwwi/7uAXtphcyxDD9uQPuqBYYi/YzxjLxrBImtyIVc9wVctsXg+4Xhe8VdN0Xh/EVdd4XiPMVduAXifQVeOEYivUWeuMYivYWfOUWfugXgOsXguwXhO8YhvEYiPIYifMWeOEVeeMWe+UWfecWf+oXhO4VdNwXhvAYh/IVdd8Wd+EYifQWeOIWeuQYi/UWf+kXgewXhfAVdN7///8CcMFSAAAANHRSTlMAHM03N80c3PHx3C/rLS3rfKC/zYsGBougy8B8UH5wWTfxclJwUDXrLe+JiXYQ5+124Ozq9vT/awAAAAFiS0dEt90AO2cAAAAHdElNRQfiAhgXEywya6S9AAAFmUlEQVR42u3a53cWRRTAYVDsil1RURMbsQvOAKJikAh2URQBY6FqrNjBrmAbNSJENMaOimKvf58vSQhv2d1p9969w9zf971znrN75twPO2lSQJMPODDkMaymHHQw1VGTD1GHMrJPOUwfTmRvyBUje0Ouieyjcj72UTmNfVzOxT4up7BPyHnYJ+T49iY5B3uTHNveIq/f3iLHtbfJ67a3yTHtHfJ67R1yPHuBvE57gRzLXiivz14ox7GXyOuyl8gx7KXyeuylcnh7hbwOe4Uc2l4pp7dXymHtFnnDfgQjOaTdKlfqyKMYyeHsDnJK+1S7HMruJKezTz3aQQ5jd5RT2R3lEHZnOY3dWR5v95BT2D3ksXYvOb7dSx5n95Rj2z3lMXZvOa7dWx5uD5Bj2gPkofYgOZ49SB5mD5Rj2QPlIfZgOY49WO5vj5Bj2CPkvvYoObw9Su5nj5RD2yPlPvZoOaw9Wu5uB5BD2gHkrnYQOZwdRO5mB5JD2YHkLnYwOYwdTG63A8oh7IBymx1UHm8HlVfbgeWxdmB5lR1cHmcHl5fbEeQxdgR5mR1FHm5HkRfbkeShdiR5kR1NHmZHk3faEeUhdkR5ux1V7m9HlbfakeW+dmR5sx1d7mdHl++zE8h97ATyvXYSubudRD5mJ5K72onko/ZjjrV23Ow51o63jznhRLv8pJOnWTtl7hXWTrWPOc3lTUyfd+VVtk53v8ZiO+Pq+dfYOhPorOmqdwEnur52IR1d9V3Hia4XLaajq+tv4ETXN95ER1fqZk50fcuthHR12xJGdK1vJ6SrO5Zyous7CenqrmWc6Pru5XR0tWIlJ7q+p5+Orubdy4mu75tPR1e993Oi6wdW0dFV32pOdL1mMR1drV3Hia7XP0hHV+ohTnQ98DAhXT3CiV643KDR1aNLOdH1Y4R09fgyTnT9xAY6ulrxJCe6fqqfjt6+3NRM108/Q0dXvc9youvnnqejq42rOdH1phfo6GrtHE50vf5FOrpSsznR9cBLhHT1Mie61nMJ6eqVJZzo+lVCunrtdU50/cYGOrravDKY3tUFTtdbltPR1ZtvBdK7urtD7NV0/XY/HV29824QvavbmBC7ha7fW0VHVxsXBND3yIPsNrretJCOrvre96aPyUPsVrpe9AEdXamzAuUBdjtdD5xNSD8nVO5vd6Drc9nSm+Xe9qTprXJfe8r0drmnPWF6p9zPni69SO5lT5ZeLPexp0ovk3vYE6WXy93tadKr5M72JOnV8ob9vP2VbpMbM6Nn/6Tb5W729Ogucid7cnQ3uYs9Nbqr3MGeGL3nfFe53Z4WvWeGu9xqT4ruJ7fZU6L7yi32hOj+8mp7OvQQeaU9GXqYvMqeCj1UXmFPhB4uL7enQY+Rl9qToMfJy+wp0GPlJfYE6PHyYjt/OoS80M6eDiMvsnOnQ8kL7MzpcPJOO286pLzDzpoOK2+3c6ZDy9vsjOnw8lY7XzqGvMXOlo4jb7ZzpWPJm+xM6XjyfXaedEz5hJ0lHVe+186Rji0ftzOk48vH7PzoFPJROzs6jXyPnRv9AiJ5w34hM/pFF9u7ZPBDW5c6jLmMGd3lD6qZW632WQ5juH3wTnTz0bZs6Wb7ULZ08/GObOnmk0+zpZvhz7Klm5HPs6WbkS+ypRvzZb5089VgtnTz9bZs6eaboWzp5tsd2dLNzu+ypZvh77Olm5EfsqWbkV3Z0o35MV9623KTFd38tDtbuvl5KFu6+eXXbOlm52/Z0s3vf2RLN8N/Zks3f+3Klm7M3/nSzT+D2dLN1t3Z0s2//2VLN9svz5ZuZgpd6EIXutCFLnShC13oQhe60IUudKELXehCF7rQhS50oQtd6EIXutCFLnShC13oQhe60IUudKELXehCF7rQhS50oQtd6EIXutDzov8PkVLtBMKmRJ4AAAAASUVORK5CYII="
+          />
+        </svg>
+      </a>
+      <button class="hl_navbar--toggler" type="button" id="navbar-toggler">
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+      </button>
+      <div class="hl_navbar--collapse" id="navbar-collapse">
+        <button class="hl_navbar--button btn btn-success btn-block" data-toggle="modal" data-target="#client-checkin--modal">Check In Client</button>
+        <ul class="hl_navbar--links list-unstyled" id="nav-links">
+          <li id="nav-dashboard">
+            <a href="./" data-tooltip="nav-tooltip" data-placement="right" title="Dashboard">
+              <i class="icon-duplicate"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li id="nav-widgets">
+            <a href="./widgets.html" data-tooltip="nav-tooltip" data-placement="right" title="Widgets">
+              <i class="icon-tiles-filled"></i>
+              <span>Widgets</span>
+            </a>
+          </li>
+          <li id="nav-marketing">
+            <a data-toggle="collapse" href="#nav-marketing-collapse" role="button" aria-expanded="false" aria-controls="nav-marketing-collapse" data-tooltip="nav-tooltip" data-placement="right" title="Marketing">
+              <i class="icon-mail"></i>
+              <span>Marketing</span>
+              <i class="caret icon-arrow-down-1"></i>
+            </a>
+            <div class="collapse nav-dropdown-links" id="nav-marketing-collapse">
+              <ul>
+                <li class="active">
+                  <a href="./customer-acquisition.html">Customer Acquisition</a>
+                </li>
+                <li>
+                  <a href="./triggers.html">Triggers</a>
+                </li>
+                <li>
+                  <a href="./workflow.html">Workflow</a>
+                </li>
+                <li>
+                  <a href="./form-builder.html">Form Builder</a>
+                </li>
+                <li>
+                  <a href="./landing-page-creator.html">Page Creator</a>
+                </li>
+                <li>
+                  <a href="#">Product Adoption</a>
+                </li>
+                <li>
+                  <a href="#">Product Upsell</a>
+                </li>
+                <li>
+                  <a href="#">Content Library</a>
+                </li>
+                <li>
+                  <a href="#">Snapshot Widget</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li id="nav-reviews">
+            <a href="./reviews.html" data-tooltip="nav-tooltip" data-placement="right" title="Reviews">
+              <i class="icon-bubble-filled"></i>
+              <span>Reviews</span>
+            </a>
+          </li>
+          <li id="nav-customers">
+            <a data-toggle="collapse" href="#nav-customer-collapse" role="button" aria-expanded="false" aria-controls="nav-customer-collapse" data-tooltip="nav-tooltip" data-placement="right" title="Customers">
+              <i class="icon-user"></i>
+              <span>Customers</span>
+              <i class="caret icon-arrow-down-1"></i>
+            </a>
+            <div class="collapse nav-dropdown-links" id="nav-customer-collapse">
+              <ul>
+                <li class="active">
+                  <a href="./contact-details.html">Contact Details</a>
+                </li>
+                <li>
+                  <a href="./customers.html">Customers</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li id="nav-team">
+            <a href="./team.html" data-tooltip="nav-tooltip" data-placement="right" title="Team">
+              <i class="icon-heart"></i>
+              <span>Team</span>
+            </a>
+          </li>
+          <li id="nav-online-analysis">
+            <a href="./online-analysis.html" data-tooltip="nav-tooltip" data-placement="right" title="Online Analysis">
+              <i class="icon-pulse"></i>
+              <span>Online Analysis</span>
+            </a>
+          </li>
+          <li id="nav-opportunities">
+            <a href="./opportunities.html" data-tooltip="nav-tooltip" data-placement="right" title="Opportunities">
+              <i class="icon-blocks"></i>
+              <span>Opportunities</span>
+            </a>
+          </li>
+          <li id="nav-conversations">
+            <a href="./conversations.html" data-tooltip="nav-tooltip" data-placement="right" title="Conversations">
+              <i class="icon-bubble"></i>
+              <span>Conversations</span>
+            </a>
+          </li>
+          <li id="nav-calendar">
+            <a href="./calendar.html" data-tooltip="nav-tooltip" data-placement="right" title="Calendar">
+              <i class="icon-calendar"></i>
+              <span>Calendar</span>
+            </a>
+          </li>
+          <li id="nav-settings">
+            <a href="./settings-profile.html" data-tooltip="nav-tooltip" data-placement="right" title="Settings">
+              <i class="icon-settings-1"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+          <li id="nav-social">
+            <a href="./social.html" data-tooltip="nav-tooltip" data-placement="right" title="Social Media">
+              <i class="icon-target-2"></i>
+              <span>Social Media</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- END of .hl_navbar -->
+
+  <!-- Client Check In Modal -->
+  <div class="modal fade" id="client-checkin--modal" tabindex="-1" role="dialog" aria-labelledby="client-checkin--modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-header--inner">
+            <h5 class="modal-title" id="client-checkin--modalLabel"><i class="icon icon-user --green"></i> Client Check In</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body--inner">
+            <div class="form-group">
+              <label>Customer Phone or Email:</label>
+              <input type="text" class="form-control" placeholder="Customer Phone or Email">
+            </div>
+            <div class="form-group">
+              <label>Customer Name:</label>
+              <input type="text" class="form-control" placeholder="Customer Name">
+            </div>
+            <div class="modal-buttons d-flex align-items-center justify-content-between">
+              <button type="button" class="btn btn-link">Send to Multiple Clients</button>
+              <button type="button" class="btn btn-success">Send a Review Invite</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <header class="hl_header nav-shrink ">
+    <div class="container-fluid">
+      <select class="selectpicker hl_header--picker" data-width="fit" data-header="Switch Location <a href='#'>View Locations</a>">
+        <option data-content="<img src='./img/img-converse.png'> Converse Store #32">Converse Store #32</option>
+        <option data-content="<img src='./img/img-nike1.png'> Nike Store, 49 Garnet Stream, Baja, CA">Nike Store, 49 Garnet Stream, Baja, CA</option>
+        <option data-content="<img src='./img/img-nike2.png'> Nike Store, Andersen Center 83b, West 82nd Street, San Francisco, CA">Nike Store, Andersen Center 83b, West 82nd Street, San Francisco, CA</option>
+      </select>
+      <div class="hl_header--controls">
+        <a href="#" class="btn btn-circle btn-yellow hl_header--recent-activities -notification" id="recent_activities-toggle">
+          <i class="icon-list"></i>
+          <span class="sr-only">View Recent Activities</span>
+        </a>
+        <a href="#" class="btn btn-circle btn-primary hl_header--copy-link" data-toggle="modal" data-target="#review-link--modal">
+          <i class="icon-link"></i>
+          <span class="sr-only">Copy Review Link</span>
+        </a>
+        <div class="hl_header--dropdown hl_header--phone dropdown --no-caret">
+          <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="btn btn-circle btn-green-lt"><i class="fas fa-phone"></i></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="hl_header--phone-header">
+              <h4>Phone Settings</h4>
+            </div>
+            <div class="caller-id">
+              <div class="caller-id-header">
+                <h3>Caller ID:</h3>
+                <a href="#">Manage Numbers</a>
+              </div>
+              <div class="form-group">
+                <div class="select-control-wrap">
+                  <select class="select-control">
+                    <option>+1 802-327-5248 (Primary Number)</option>
+                    <option>Manage/change phone numbers →</option>
+                  </select>
+                </div>
+                <button type="button" class="btn btn-primary"><i class="icon icon-duplicate"></i>
+                </button>
+              </div>
+            </div>
+            <div class="call-recording">
+              <h3>Call Recording:</h3>
+              <div class="toggle">
+                <input type="checkbox" class="tgl tgl-light" id="call-recording">
+                <label class="tgl-btn" for="call-recording"></label>
+              </div>
+            </div>
+            <div class="audio-settings">
+              <h3>Audio Settings:</h3>
+              <div class="audio-settings-item">
+                <label>Sound Output</label>
+                <div class="select-control-wrap">
+                  <select class="select-control">
+                    <option>System Default</option>
+                    <option>Built-in Output</option>
+                  </select>
+                </div>
+                <a href="#" class="test">Test</a>
+              </div>
+              <div class="audio-settings-item">
+                <label>Ringing:</label>
+                <div class="select-control-wrap">
+                  <select class="select-control">
+                    <option>System Default</option>
+                    <option>Built-in Output</option>
+                  </select>
+                </div>
+                <a href="#" class="test">Test</a>
+              </div>
+              <div class="audio-settings-item">
+                <label>Microphone:</label>
+                <div class="select-control-wrap">
+                  <select class="select-control">
+                    <option>System Default</option>
+                    <option>Built-in Output</option>
+                  </select>
+                </div>
+                <a href="#" class="test">Test</a>
+              </div>
+            </div>
+            <div class="hl_header--phone-footer">
+              <div class="form-group">
+                <i class="fas fa-phone"></i>
+                <input type="text" class="form-control" placeholder="Dial a number">
+                <button type="button" class="btn btn-success btn-sm">Call</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hl_header--dropdown dropdown --no-caret">
+          <a href="#" class="hl_header--avatar dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="avatar">
+              <div class="avatar_img">
+                <img src="./img/img-avatar-sample1.png" alt="Avatar Name">
+              </div>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- END of .hl_header -->
+
+  <div class="hl_recent-activities">
+    <div class="hl_recent-activities--inner">
+      <ul class="hl_recent-activities--list list-unstyled">
+        <li class="hl_recent-activities--item --notification">
+          <div class="avatar --sm">
+            <div class="avatar_img --blue">
+              BM
+            </div>
+          </div>
+          <p><strong>Bruce Mann</strong> sent a Review Request to  Amanda Nunes. </p>
+          <p class="location">Nike Store, 49 Garnet Stream, Baja, CA</p>
+          <p class="time-date">10 min ago</p>
+        </li>
+        <li class="hl_recent-activities--item --notification">
+          <div class="avatar --sm">
+            <div class="avatar_img">
+              <img src="./img/img-avatar-sample4.png" alt="Avatar Name">
+            </div>
+          </div>
+          <p><strong>Henry J.</strong> sent a Review Request to  Amanda Nunes. </p>
+          <p class="location">Nike Store, 49 Garnet Stream, Baja, CA</p>
+          <p class="time-date">10 min ago</p>
+        </li>
+        <li class="hl_recent-activities--item --notification">
+          <span class="recent-activities--icon --rating">
+          <i class="icon icon-star-filled"></i>
+        </span>
+          <p>Our Average Rating went up! </p>
+          <p class="location">Nike Store, 49 Garnet Stream, Baja, CA</p>
+          <p class="time-date">10 min ago</p>
+        </li>
+        <li class="hl_recent-activities--item">
+          <span class="recent-activities--icon --reviews">
+          <i class="icon icon-send"></i>
+        </span>
+          <p>Milestone of 5,000 team Review Requestes hit! </p>
+          <p class="location">Nike Store, 49 Garnet Stream, Baja, CA</p>
+          <p class="time-date">10 min ago</p>
+        </li>
+        <li class="hl_recent-activities--item">
+          <div class="avatar --sm">
+            <div class="avatar_img --orange">
+              GT
+            </div>
+          </div>
+          <p><strong>Gerald Terry</strong> sent a Review Request to  Amanda Nunes. </p>
+          <p class="location">Nike Store, 49 Garnet Stream, Baja, CA</p>
+          <p class="time-date">10 min ago</p>
+        </li>
+        <li class="hl_recent-activities--item">
+          <div class="avatar --sm">
+            <div class="avatar_img --green">
+              RF
+            </div>
+          </div>
+          <p><strong>Ricardo Foster</strong> sent a Review Request to  Amanda Nunes. </p>
+          <p class="location">Nike Store, 49 Garnet Stream, Baja, CA</p>
+          <p class="time-date">10 min ago</p>
+        </li>
+        <li class="hl_recent-activities--item">
+          <div class="avatar --sm">
+            <div class="avatar_img">
+              <img src="./img/img-avatar-sample2.png" alt="Avatar Name">
+            </div>
+          </div>
+          <p><strong>Samantha Irving</strong> sent a Review Request to  Amanda Nunes.</p>
+          <p class="location">Nike Store, 49 Garnet Stream, Baja, CA</p>
+          <p class="time-date">10 min ago</p>
+        </li>
+        <li class="hl_recent-activities--item">
+          <div class="avatar --sm">
+            <div class="avatar_img">
+              <img src="./img/img-avatar-sample3.png" alt="Avatar Name">
+            </div>
+          </div>
+          <p><strong>Cecelia Atkins</strong> sent a Review Request to  Amanda Nunes. </p>
+          <p class="location">Nike Store, 49 Garnet Stream, Baja, CA</p>
+          <p class="time-date">10 min ago</p>
+        </li>
+        <li class="hl_recent-activities--item">
+          <div class="avatar --sm">
+            <div class="avatar_img --purple">
+              NP
+            </div>
+          </div>
+          <p><strong>Norman E. Parque</strong> sent a Review Request to  Amanda Nunes. </p>
+          <p class="location">Nike Store, 49 Garnet Stream, Baja, CA</p>
+          <p class="time-date">10 min ago</p>
+        </li>
+        <li class="hl_recent-activities--item">
+          <a href="#">Load More</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- END of .recent_activities -->
+
+  <div class="modal review-link--modal" tabindex="-1" role="dialog" id="review-link--modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-body">
+          <img src="./img/img-link-review-copied.png">
+          <h4>Link copied to clipboard!</h4>
+          <p>www.somekindoflink.com/mycompanyname/213213</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="hl_wrapper nav-shrink d-flex">
+
+    <section class="hl_wrapper--inner page-creator" id="page-creator">
+
+      <section class="hl_page-creator--main">
+        <div class="hl_page-creator--menu">
+          <div class="menu--left">
+            <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Back"><i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="btn-group">
+              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Desktop" id="page-creator-desktop"><i class="fas fa-desktop"></i>
+              </button>
+              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Mobile" id="page-creator-mobile"><i class="fas fa-mobile-alt"></i>
+              </button>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Apps"><i class="fas fa-plug"></i>
+              </button>
+              <div class="dropdown" id="settings-group">
+                <button type="button" class="btn btn-light btn-sm dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" data-tooltip="tooltip" data-placement="top" title="Settings"><i class="fas fa-cogs"></i><span class="btn-text">Settings</span>
+                </button>
+                <div class="dropdown-menu">
+                  <div class="nav">
+                    <a class="dropdown-item" data-toggle="tab" href="#integrations">Integrations</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#seo">SEO Meta Data</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#tracking">Tracking Code</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#css">Custom CSS</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#background">Background</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#typography">Typography</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#general">General</a>
+                  </div>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button type="button" class="btn btn-light btn-sm dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" data-tooltip="tooltip" data-placement="top" title="Pop up"><i class="fas fa-external-link-alt"></i><span class="btn-text">Pop up</span>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Show Popup</a>
+                  <a class="dropdown-item" href="#">Edit Settings</a>
+                </div>
+              </div>
+              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Undo"><i class="fas fa-undo"></i>
+              </button>
+              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Redo" disabled><i class="fas fa-redo"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu--right">
+            <div class="btn-group">
+              <div class="dropdown" id="section-group">
+                <button type="button" class="btn btn-light btn-sm dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" data-tooltip="tooltip" data-placement="top" title="Sections"><i class="fas fa-expand"></i><span class="btn-text">Sections</span>
+                </button>
+                <div class="dropdown-menu">
+                  <div class="nav">
+                    <a class="dropdown-item" data-toggle="tab" href="#add-section">Add Section</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#manage-sections">Manage</a>
+                  </div>
+                </div>
+              </div>
+              <div class="dropdown" id="row-group">
+                <button type="button" class="btn btn-light btn-sm dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" data-tooltip="tooltip" data-placement="top" title="Rows"><i class="fas fa-bars"></i><span class="btn-text">Rows</span>
+                </button>
+                <div class="dropdown-menu">
+                  <div class="nav">
+                    <a class="dropdown-item" data-toggle="tab" href="#add-row">Add Row</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#manage-rows">Manage</a>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Columns" id="column-group"><i class="fas fa-columns"></i><span class="btn-text">Columns</span>
+              </button>
+              <div class="dropdown" id="element-group">
+                <button type="button" class="btn btn-light btn-sm dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" data-tooltip="tooltip" data-placement="top" title="Elements"><i class="fas fa-code"></i><span class="btn-text">Elements</span>
+                </button>
+                <div class="dropdown-menu">
+                  <div class="nav">
+                    <a class="dropdown-item" data-toggle="tab" href="#add-element">Add Element</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#manage-elements">Manage</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Preview"><i class="far fa-eye"></i><span class="btn-text">Preview</span>
+              </button>
+              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Save"><i class="far fa-save"></i><span class="btn-text">Save</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hl_page-creator--content">
+
+          <section class="hl_page-creator--section">
+            <div class="hl_page-creator--actions">
+              <div class="move-actions">
+                <span data-tooltip="tooltip" data-placement="right" title="Up"><i class="icon icon-arrow-up-2"></i></span>
+                <span data-tooltip="tooltip" data-placement="right" title="Down"><i
+                  class="icon icon-arrow-down-2"></i></span>
+              </div>
+              <div class="more-actions">
+                <span data-tooltip="tooltip" data-placement="left" title="Settings"><i class="fas fa-cog"></i></span>
+                <span data-tooltip="tooltip" data-placement="left" title="Clone"><i class="far fa-eye"></i></span>
+                <span data-tooltip="tooltip" data-placement="left" title="Save"><i class="far fa-copy"></i></span>
+                <span data-tooltip="tooltip" data-placement="left" title="Delete"><i class="far fa-trash-alt"></i></span>
+              </div>
+            </div>
+            <span class="add-new-section" data-tooltip="tooltip" data-placement="bottom" title="Add New Section"><i class="icon icon-plus"></i></span>
+            <div href="#" class="new-row-blank">
+              <span class="btn btn-light5 btn-slim">Add New Row</span>
+            </div>
+          </section>
+
+
+        </div>
+      </section>
+      <!-- END of .hl_page-creator--main -->
+
+      <section class="hl_page-creator--settings-group">
+        <a href="#" class="close-group" id="close-settings-group"><i class="icon icon-close"></i></a>
+        <div class="hl_settings-group">
+          <div class="tab-content" id="hl_settings-group-tab">
+            <div class="tab-pane fade" id="integrations" role="tabpanel" aria-labelledby="integrations-tab">
+              <h2>Email Integration Settings</h2>
+              <div class="integrations">
+                <div class="text-center">
+                  <h5>Auto Responder Integration</h5>
+                  <p>Here you will be able to hook up your integrations with your auto-responder service...</p>
+                  <p class="not-connected"><i class="icon icon-close"></i> Not Connected</p>
+                </div>
+                <hr>
+                <div class="form-group">
+                  <label>Integrations</label>
+                  <select class="selectpicker" data-width="100%">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Action</label>
+                  <select class="selectpicker" data-width="100%">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>List to Add</label>
+                  <select class="selectpicker" data-width="100%">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab">
+              <h2>SEO Mata Data</h2>
+              <div class="seo">
+                <div class="warning">
+                  <p>Warning: Change the Default SEO Page Title.</p>
+                </div>
+                <div class="form-group">
+                  <label>Title</label>
+                  <input type="text" class="form-control" placeholder="Title">
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea class="form-control" placeholder="Description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Keywords</label>
+                  <input type="text" class="form-control" placeholder="Keywords" value="clickfunnels, landing page, web site editor">
+                </div>
+                <div class="form-group">
+                  <label>Author</label>
+                  <input type="text" class="form-control" placeholder="Author" value="Your Name">
+                </div>
+                <div class="form-group">
+                  <label>Social Image</label>
+                  <input type="file" placeholder="Social Image">
+                </div>
+                <hr>
+                <h3>SEO Preview</h3>
+                <div class="seo-card --seo1">
+                  <h4 class="seo-title">My Awesome Landing Page - Powered by ClickFunnels.com</h4>
+                  <p><a href="#" class="seo-link">http://yourwebsite.com/would-be-here</a>
+                  </p>
+                  <p class="seo-description">description for your awesome landing page</p>
+                </div>
+                <div class="seo-card --seo2">
+                  <h4 class="seo-title">My Awesome Landing Page - Powered by ClickFunnels.com</h4>
+                  <p class="seo-description">description for your awesome landing page</p>
+                  <p><a href="#" class="seo-link">http://yourwebsite.com/would-be-here</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="tracking" role="tabpanel" aria-labelledby="tracking-tab">
+              <h2>Tracking Code</h2>
+              <div class="tracking">
+                <div class="form-group">
+                  <label>Add HTML/Javascript</label>
+                  <textarea class="form-control" placeholder="Add HTML/Javascript here..." rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="css" role="tabpanel" aria-labelledby="css-tab">
+              <h2>Custom CSS</h2>
+              <div class="css">
+                <div class="form-group">
+                  <label>Add CSS</label>
+                  <textarea class="form-control" placeholder="Add custo CSS here..." rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="background" role="tabpanel" aria-labelledby="background-tab">
+              <h2>Background</h2>
+              <div class="background">
+                <div class="form-group">
+                  <label>Background Image</label>
+                  <input type="file">
+                </div>
+                <div class="form-group">
+                  <label>Color</label>
+                  <input type="text" class="form-control" placeholder="Color">
+                </div>
+                <div class="form-group">
+                  <label>Background Video</label>
+                  <select class="selectpicker" data-width="100%">
+                    <option>Off</option>
+                    <option>On</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="typography" role="tabpanel" aria-labelledby="typography-tab">
+              <h2>Typography</h2>
+              <div class="typography">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, expedita. Porro, ea magni doloremque et fuga optio laudantium? Mollitia esse aliquam enim facilis eius natus laborum dolor laboriosam numquam sapiente?
+                </p>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="general-tab">
+              <h2>General Settings</h2>
+              <div class="general">
+                <div class="form-group">
+                  <label>On Submit Go To</label>
+                  <input type="text" class="form-control" placeholder="On Submit Go To">
+                </div>
+                <div class="form-group">
+                  <label>Digital Assets</label>
+                  <select class="selectpicker" data-width="100%">
+                    <option>- no asset / download -</option>
+                    <option>Facebook Strategy Guide</option>
+                    <option>Anurli</option>
+                    <option>Horatio D Medium</option>
+                    <option>Horatio D Light</option>
+                    <option>Patient Rush Favicon</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Affiliate Badge</label>
+                  <select class="selectpicker" data-width="100%">
+                    <option>Hide</option>
+                    <option>Show</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Search Engines</label>
+                  <select class="selectpicker" data-width="100%">
+                    <option>Hide</option>
+                    <option>Show</option>
+                  </select>
+                </div>
+                <button type="button" class="btn btn-success btn-block">Save Page as Template</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END of .hl_page-creator--settings-group -->
+
+      <section class="hl_page-creator--sections-group">
+        <a href="#" class="close-group" id="close-section-group"><i class="icon icon-close"></i></a>
+        <div class="hl_section-group">
+          <div class="tab-content" id="hl_section-group-tab">
+            <div class="tab-pane fade" id="add-section" role="tabpanel" aria-labelledby="add-section-tab">
+              <div class="add-section">
+                <h2>Add Sections</h2>
+                <div class="add-section-body">
+                  <div class="section-cards">
+                    <div class="section-card">
+                      <div class="icon">
+                        <i class="far fa-square"></i>
+                      </div>
+                      <h5>Full Width</h5>
+                    </div>
+                    <div class="section-card">
+                      <div class="icon">
+                        <i class="far fa-square"></i>
+                      </div>
+                      <h5>Wide</h5>
+                    </div>
+                    <div class="section-card">
+                      <div class="icon">
+                        <i class="far fa-square"></i>
+                      </div>
+                      <h5>Medium</h5>
+                    </div>
+                    <div class="section-card">
+                      <div class="icon">
+                        <i class="far fa-square"></i>
+                      </div>
+                      <h5>Small</h5>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="manage-sections" role="tabpanel" aria-labelledby="manage-sections-tab">
+              <div class="manage-sections">
+                <h2>Manage Sections</h2>
+                <div class="sections-section-group-wrap">
+                  <div class="sections-section-group">
+                    <h3>All Sections</h3>
+                    <ul class="sections">
+                      <li>
+                        <h4>Section</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Section</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Section</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Section</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Section</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END of .hl_page-creator--sections-group -->
+
+      <section class="hl_page-creator--rows-group">
+        <a href="#" class="close-group" id="close-row-group"><i class="icon icon-close"></i></a>
+        <div class="hl_row-group">
+          <div class="tab-content" id="hl_row-group-tab">
+            <div class="tab-pane fade" id="add-row" role="tabpanel" aria-labelledby="add-row-tab">
+              <div class="add-row">
+                <h2>Add Row</h2>
+                <div class="add-row-body">
+                  <div class="row-cards">
+                    <div class="row-card">
+                      <div class="icon">
+                        <i class="fas fa-columns"></i>
+                      </div>
+                      <h5>1 Column</h5>
+                    </div>
+                    <div class="row-card">
+                      <div class="icon">
+                        <i class="fas fa-columns"></i>
+                      </div>
+                      <h5>2 Column</h5>
+                    </div>
+                    <div class="row-card">
+                      <div class="icon">
+                        <i class="fas fa-columns"></i>
+                      </div>
+                      <h5>3 Column</h5>
+                    </div>
+                    <div class="row-card">
+                      <div class="icon">
+                        <i class="fas fa-columns"></i>
+                      </div>
+                      <h5>4 Column</h5>
+                    </div>
+                    <div class="row-card">
+                      <div class="icon">
+                        <i class="fas fa-columns"></i>
+                      </div>
+                      <h5>5 Column</h5>
+                    </div>
+                    <div class="row-card">
+                      <div class="icon">
+                        <i class="fas fa-columns"></i>
+                      </div>
+                      <h5>6 Column</h5>
+                    </div>
+                    <div class="row-card">
+                      <div class="icon">
+                        <i class="fas fa-columns"></i>
+                      </div>
+                      <h5>Left Sidebar</h5>
+                    </div>
+                    <div class="row-card">
+                      <div class="icon">
+                        <i class="fas fa-columns"></i>
+                      </div>
+                      <h5>Right Sidebar</h5>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="manage-rows" role="tabpanel" aria-labelledby="manage-rows-tab">
+              <div class="manage-rows">
+                <h2>Manage Rows</h2>
+                <div class="rows-section-group-wrap">
+                  <div class="rows-section-group">
+                    <h3>Section</h3>
+                    <ul class="rows">
+                      <li>
+                        <h4>2 Column Row</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="rows-section-group">
+                    <h3>Section</h3>
+                    <ul class="rows">
+                      <li>
+                        <h4>1 Column Row</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>1 Column Row</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="rows-section-group">
+                    <h3>Section</h3>
+                    <ul class="rows">
+                      <li>
+                        <h4>2 Column Row</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="rows-section-group">
+                    <h3>Section</h3>
+                    <ul class="rows">
+                      <li>
+                        <h4>1 Column Row</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>1 Column Row</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END of .hl_page-creator--rows-group -->
+
+      <section class="hl_page-creator--columns-group">
+        <a href="#" class="close-group" id="close-column-group"><i class="icon icon-close"></i></a>
+        <div class="manage-columns">
+          <h2>Manage Columns</h2>
+          <div class="columns-section-group-wrap">
+            <div class="columns-section-group">
+              <h3>Section > 2 Column Row</h3>
+              <ul class="columns">
+                <li>
+                  <h4>Left Column</h4>
+                  <div class="actions">
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-edit"></i></a>
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                  </div>
+                </li>
+                <li>
+                  <h4>Right Column</h4>
+                  <div class="actions">
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-edit"></i></a>
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="columns-section-group">
+              <h3>Section > 1 Column Row</h3>
+              <ul class="columns">
+                <li>
+                  <h4>Full Column</h4>
+                  <div class="actions">
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-edit"></i></a>
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="columns-section-group">
+              <h3>Section > 2 Column Row</h3>
+              <ul class="columns">
+                <li>
+                  <h4>Left Column</h4>
+                  <div class="actions">
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-edit"></i></a>
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                  </div>
+                </li>
+                <li>
+                  <h4>Right Column</h4>
+                  <div class="actions">
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-edit"></i></a>
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="columns-section-group">
+              <h3>Section > 1 Column Row</h3>
+              <ul class="columns">
+                <li>
+                  <h4>Full Column</h4>
+                  <div class="actions">
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-edit"></i></a>
+                    <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <!-- END of .hl_page-creator--columns-group -->
+
+      <section class="hl_page-creator--element-group">
+        <a href="#" class="close-group" id="close-element-group"><i class="icon icon-close"></i></a>
+        <div class="hl_element-group">
+          <div class="tab-content" id="hl_element-group-tab">
+            <div class="tab-pane fade" id="add-element" role="tabpanel" aria-labelledby="add-element-tab">
+              <div class="add-element">
+                <div class="add-element-menu">
+                  <ul>
+                    <li class="active">
+                      <a href="#">All</a>
+                    </li>
+                    <li>
+                      <a href="#">Text</a>
+                    </li>
+                    <li>
+                      <a href="#">Media</a>
+                    </li>
+                    <li>
+                      <a href="#">Form</a>
+                    </li>
+                    <li>
+                      <a href="#">Content</a>
+                    </li>
+                    <li>
+                      <a href="#">Countdown</a>
+                    </li>
+                    <li>
+                      <a href="#">Misc</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="add-element-body">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                  </div>
+                  <div class="element-group">
+                    <h4>Text</h4>
+                    <div class="element-cards">
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-heading"></i>
+                        </div>
+                        <h5>Headline</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-font"></i>
+                        </div>
+                        <h5>Sub-headline</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-paragraph"></i>
+                        </div>
+                        <h5>Paragraph</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-list"></i>
+                        </div>
+                        <h5>Bullet List</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="element-group">
+                    <h4>Media</h4>
+                    <div class="element-cards">
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-image"></i>
+                        </div>
+                        <h5>Image</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-images"></i>
+                        </div>
+                        <h5>Image Popup</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h5>Video</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="far fa-play-circle"></i>
+                        </div>
+                        <h5>Video popup</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-volume-up"></i>
+                        </div>
+                        <h5>Audio player</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="element-group">
+                    <h4>Form</h4>
+                    <div class="element-cards">
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-stop"></i>
+                        </div>
+                        <h5>Button</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <h5>Facebook Option</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="far fa-square"></i>
+                        </div>
+                        <h5>Input</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="far fa-hand-pointer"></i>
+                        </div>
+                        <h5>Select Box</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-comment-alt"></i>
+                        </div>
+                        <h5>Text Area</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-check-square"></i>
+                        </div>
+                        <h5>Checkbox Headline</h5>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="element-group">
+                    <h4>Advance Form</h4>
+                    <div class="element-cards">
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-sms"></i>
+                        </div>
+                        <h5>SMS Sign up</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-file-invoice"></i>
+                        </div>
+                        <h5>Billing Add.</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-file-invoice"></i>
+                        </div>
+                        <h5>Shipping Add.</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-poll-h"></i>
+                        </div>
+                        <h5>Survey</h5>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="element-group">
+                    <h4>Content Blocks</h4>
+                    <div class="element-cards">
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-circle"></i>
+                        </div>
+                        <h5>Icon</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-file-image"></i>
+                        </div>
+                        <h5>Img Feature</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-link"></i>
+                        </div>
+                        <h5>Navigation</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="far fa-question-circle"></i>
+                        </div>
+                        <h5>FAQ</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="far fa-window-minimize"></i>
+                        </div>
+                        <h5>Divider</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-window-minimize"></i>
+                        </div>
+                        <h5>Progress bar</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-list"></i>
+                        </div>
+                        <h5>Image List</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-table"></i>
+                        </div>
+                        <h5>Pricing Table</h5>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="element-group">
+                    <h4>Countdown</h4>
+                    <div class="element-cards">
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-hourglass-start"></i>
+                        </div>
+                        <h5>Countdown</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="far fa-clock"></i>
+                        </div>
+                        <h5>Minute Timer</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-clock"></i>
+                        </div>
+                        <h5>Day Timer</h5>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="element-group">
+                    <h4>Misc Elements</h4>
+                    <div class="element-cards">
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-share-alt-square"></i>
+                        </div>
+                        <h5>Social Share</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-bell"></i>
+                        </div>
+                        <h5>Privacy Notice</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-comments"></i>
+                        </div>
+                        <h5>FB Comments</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-align-center"></i>
+                        </div>
+                        <h5>Text Block</h5>
+                      </div>
+                      <div class="element-card">
+                        <div class="icon">
+                          <i class="fas fa-code"></i>
+                        </div>
+                        <h5>Custom JS/HTML</h5>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="manage-elements" role="tabpanel" aria-labelledby="manage-elements-tab">
+              <div class="manage-elements">
+                <h2>Manage Elements</h2>
+                <div class="elements-section-group-wrap">
+                  <div class="elements-section-group">
+                    <h3>Section > Left Column</h3>
+                    <ul class="elements">
+                      <li>
+                        <h4>Image</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="elements-section-group">
+                    <h3>Section > Right Column</h3>
+                    <ul class="elements">
+                      <li>
+                        <h4>Headline</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Headline</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Input Form</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Input Form</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Button</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="elements-section-group">
+                    <h3>Section > Full Column</h3>
+                    <ul class="elements">
+                      <li>
+                        <h4>Headline</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Button</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Input</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Button</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Headline</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="elements-section-group">
+                    <h3>Section > Right Column</h3>
+                    <ul class="elements">
+                      <li>
+                        <h4>Headline</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Headline</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Input Form</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Input Form</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                      <li>
+                        <h4>Button</h4>
+                        <div class="actions">
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
+                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END of .hl_page-creator--element-group -->
+
+    </section>
+    <!-- END of .form-builder -->
+
+  </section>
+  <!-- END of .hl_wrapper -->
+
+  <!-- ======================= Outdated Browser (Supports IE10 & Above) ======================= -->
+  <div id="outdated" aria-hidden="true">
+    <h5>:(</h5>
+    <h6>Your browser is out-of-date!</h6>
+    <p>This website is built using latest technologies. Unfortunately your browser doesn't support those. Please update your browser to view this website correctly. Thank you.<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank">Update my browser now </a>
+    </p>
+  </div>
+  <!-- ================================= END: Outdated Browser ================================ -->
+</body>
+
+</html>
