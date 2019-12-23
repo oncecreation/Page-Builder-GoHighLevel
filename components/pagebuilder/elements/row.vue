@@ -26,7 +26,7 @@
     data() {
       return {
         noColumn: true,
-        rowElements: []
+        nodes: []
       }
     },
   }

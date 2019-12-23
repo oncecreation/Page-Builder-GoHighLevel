@@ -45,7 +45,7 @@
     },
     methods: {
       addRow(index) {
-        this.$emit('open-drawer', 'selectColumn')
+        this.$root.$emit('open-column-drawer', 'selectColumn')
       },
       addColumn(type) {
        this.noRow = false
@@ -58,6 +58,9 @@
             break
           case 'col-3':
             this.numColumns = 3
+            break
+          case 'col-4':
+            this.numColumns = 4
             break
           default:
             this.numColumns = 1

@@ -366,7 +366,7 @@
                 <div class="add-row-body">
                   <Container class="row-cards" tag="div">
                       <Draggable v-for="column in columns" :key="column.name" class="row-card" tag="div">
-                        <div @click="$root.$emit('add-column', column.id)">
+                        <div @click="$root.$emit('add-column', column.id); columnDrawerOpen = false;"">
                           <div class="icon">
                             <i class="fas fa-columns"></i>
                           </div>
@@ -537,11 +537,11 @@
       </section>
       <!-- END of .hl_page-creator--columns-group -->
 
-      <section class="hl_page-creator--element-group">
+      <section class="hl_page-creator--element-group" :class="{'active': elementsDrawerOpen}">
         <a href="#" class="close-group" id="close-element-group"><i class="icon icon-close"></i></a>
         <div class="hl_element-group">
           <div class="tab-content" id="hl_element-group-tab">
-            <div class="tab-pane fade" id="add-element" role="tabpanel" aria-labelledby="add-element-tab">
+            <div class="tab-pane fade" :class="{'active show': elementsDrawerOpen}" id="add-element" role="tabpanel" aria-labelledby="add-element-tab">
               <div class="add-element">
                 <div class="add-element-menu">
                   <ul>
@@ -575,7 +575,7 @@
                   <div class="element-group">
                     <h4>Text</h4>
                     <div class="element-cards">
-                      <div class="element-card">
+                      <div class="element-card" @click="$root.$emit('add-heading'); elementsDrawerOpen = false;">
                         <div class="icon">
                           <i class="fas fa-heading"></i>
                         </div>
@@ -603,7 +603,7 @@
                   </div>
                   <div class="element-group">
                     <h4>Media</h4>
-                    <div class="element-cards">
+                    <div class="element-cards" @click="$root.$emit('add-image'); elementsDrawerOpen = false;">
                       <div class="element-card">
                         <div class="icon">
                           <i class="fas fa-image"></i>
@@ -1008,11 +1008,25 @@
   import { Container, Draggable } from 'vue-smooth-dnd'
 
   export default {
-    props: ['columns', 'columnDrawerOpen'],
+    props: ['columns', 'elements'],
     components: {
       Container,
       Draggable
     },
+    data() {
+      return {
+        columnDrawerOpen: false,
+        elementsDrawerOpen: false
+      }
+    },
+    mounted() {
+      this.$root.$on('open-column-drawer', data => {
+          this.columnDrawerOpen = true
+      });
+      this.$root.$on('open-elements-drawer', data => {
+        this.elementsDrawerOpen = true
+      })
+    }
   }
 </script>
 <style>

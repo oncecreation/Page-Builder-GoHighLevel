@@ -1,13 +1,14 @@
 <template>
   <div>
-    <PageBuilderOptions :columns="columns" :columnDrawerOpen="columnDrawerOpen"></PageBuilderOptions>
+    <PageBuilderOptions :columns="columns"></PageBuilderOptions>
     <div class="hl_page-creator--content" id="page-main">
       <Container @drop="onDrop">
-        <Draggable v-for="element in pageElements" :key="element.id">
-          <Section :index="element.id"
+        <Draggable v-for="element in virtualDom" :key="element.id">
+          <Section
             @delete-section="deleteSection"
             @add-section="addSection"
-            @open-drawer="openDrawer"
+            :index="element.id"
+            :nodes="element.nodes"
           ></Section>
         </Draggable>
       </Container>
@@ -18,7 +19,6 @@
 
 <script>
 import { Container, Draggable } from 'vue-smooth-dnd'
-
 import Section from './elements/section.vue'
 import Row from './elements/row.vue'
 import Image from './elements/image.vue'
@@ -59,28 +59,25 @@ export default {
         {id: 'col-left', name: 'Left Sidebar'},
         {id: 'col-right', name: 'Right Sidebar'}
       ],
-      pageElements: [{id: 0, meta: 'Initial Section'}],
-      columnDrawerOpen: false,
+      virtualDom: [
+        {id: 0, meta: 'Initial Section', nodes: []}
+      ],
     }
+  },
+  mounted(){
+
   },
   methods: {
     onDrop(dropResult) {
-      this.pageElements = applyDrag(this.pageElements, dropResult);
-    },
-    openDrawer(type) {
-      switch(type){
-        case 'selectColumn':
-          this.columnDrawerOpen = !this.columnDrawerOpen
-          break
-      }
+      this.virtualDom = applyDrag(this.virtualDom, dropResult);
     },
     addSection() {
-      let lastIndex = Math.max.apply(null, this.pageElements.map(elem => elem.id))
-      this.pageElements.push({id: lastIndex + 1})
+      let lastIndex = Math.max.apply(null, this.virtualDom.map(elem => elem.id))
+      this.virtualDom.push({id: lastIndex + 1})
     },
     deleteSection(index) {
       if(!index) { return }
-      this.pageElements = this.pageElements.filter(element => element.id !== index)
+      this.virtualDom = this.virtualDom.filter(element => element.id !== index)
     },
   }
 }
