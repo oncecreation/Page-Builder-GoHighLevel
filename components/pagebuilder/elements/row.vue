@@ -13,19 +13,29 @@
       </div>
     </div>
     <span class="add-new-row" data-tooltip="tooltip" data-placement="bottom" title="" data-original-title="Add New Row"><i class="icon icon-plus"></i></span>
-    <Column></Column>
+    <Column v-for="column in numColumns" :key="column"></Column>
   </div>
 </template>
 <script>
   import Column from './column.vue'
   export default {
+    props: ['numColumns'],
     components: {
       Column
     },
     data() {
       return {
-        noColumn: true
+        noColumn: true,
+        rowElements: []
       }
     },
   }
 </script>
+<style>
+.hl_page-creator--row:hover {
+  border: 2px solid #178bf6
+}
+.hl_page-creator--row:hover .add-new-row {
+  opacity: 1
+}
+</style>

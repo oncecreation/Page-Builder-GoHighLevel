@@ -356,20 +356,22 @@
       </section>
       <!-- END of .hl_page-creator--sections-group -->
 
-      <section class="hl_page-creator--rows-group">
+      <section class="hl_page-creator--rows-group" :class="{'active': columnDrawerOpen}">
         <a href="#" class="close-group" id="close-row-group"><i class="icon icon-close"></i></a>
         <div class="hl_row-group">
           <div class="tab-content" id="hl_row-group-tab">
-            <div class="tab-pane fade" id="add-row" role="tabpanel" aria-labelledby="add-row-tab">
+            <div class="tab-pane fade active show" id="add-row" role="tabpanel" aria-labelledby="add-row-tab">
               <div class="add-row">
                 <h2>Add Row</h2>
                 <div class="add-row-body">
                   <Container class="row-cards" tag="div">
-                      <Draggable v-for="column in columns" @click="$emit('add-column', column.id)" :key="column.name" class="row-card" tag="div">
-                        <div class="icon">
-                          <i class="fas fa-columns"></i>
+                      <Draggable v-for="column in columns" :key="column.name" class="row-card" tag="div">
+                        <div @click="$root.$emit('add-column', column.id)">
+                          <div class="icon">
+                            <i class="fas fa-columns"></i>
+                          </div>
+                          <h5>{{column.name}}</h5>
                         </div>
-                        <h5>{{column.name}}</h5>
                       </Draggable>
                     </Container>
                 </div>
@@ -1006,16 +1008,11 @@
   import { Container, Draggable } from 'vue-smooth-dnd'
 
   export default {
-    props: ['columns'],
+    props: ['columns', 'columnDrawerOpen'],
     components: {
       Container,
       Draggable
     },
-    data () {
-    },
-    methods: {
-      
-    }
   }
 </script>
 <style>

@@ -70,6 +70,17 @@ $(function () {
   });
 });
 
+window.enableToolTipAgain = function(){
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  $(function () {
+    $('[data-tooltip="tooltip"]').tooltip({
+      trigger: 'hover',
+    });
+  });
+}
+
 //Nav Tooltip
 $(function () {
   $('[data-tooltip="nav-tooltip"]').tooltip({
@@ -387,27 +398,27 @@ $(function () {
 });
 
 //
-$(function () {
-  $('.open-email-tab').on('shown.bs.tab', function (e) {
-    $('.hl_contact-messages').find('.card-body').addClass('email-box-active');
-    $('.hl_conversations--message-body').find('.messages-group').addClass('email-box-active');
-  });
-  $('.open-sms-tab').on('shown.bs.tab', function (e) {
-    $('.hl_contact-messages').find('.card-body').removeClass('email-box-active');
-    $('.hl_conversations--message-body').find('.messages-group').removeClass('email-box-active');
-  })
-});
+// $(function () {
+//   $('.open-email-tab').on('shown.bs.tab', function (e) {
+//     $('.hl_contact-messages').find('.card-body').addClass('email-box-active');
+//     $('.hl_conversations--message-body').find('.messages-group').addClass('email-box-active');
+//   });
+//   $('.open-sms-tab').on('shown.bs.tab', function (e) {
+//     $('.hl_contact-messages').find('.card-body').removeClass('email-box-active');
+//     $('.hl_conversations--message-body').find('.messages-group').removeClass('email-box-active');
+//   })
+// });
 
 //
-$(function () {
-  $('#hide-sidebar').on('click', function (e) {
-    e.preventDefault();
-    $(this).toggleClass('active');
-    $('.hl_workflow--sidebar').toggleClass('hide');
-    $('.hl_wrapper--inner.workflow').toggleClass('sidebar-hide');
-    $('.hl_workflow--main').toggleClass('sidebar-hide');
-  });
-});
+// $(function () {
+//   $('#hide-sidebar').on('click', function (e) {
+//     e.preventDefault();
+//     $(this).toggleClass('active');
+//     $('.hl_workflow--sidebar').toggleClass('hide');
+//     $('.hl_wrapper--inner.workflow').toggleClass('sidebar-hide');
+//     $('.hl_workflow--main').toggleClass('sidebar-hide');
+//   });
+// });
 
 
 // $(function () {
@@ -426,70 +437,70 @@ $(function () {
 // });
 
 //
-$(function () {
-  $('#automation-list li').on('click', function () {
-    $(this).addClass('active').siblings('li').removeClass('active');
-  });
+// $(function () {
+//   $('#automation-list li').on('click', function () {
+//     $(this).addClass('active').siblings('li').removeClass('active');
+//   });
 
-  $('#automation-list .favorite').on('click', function () {
-    $(this).toggleClass('active');
-  });
+//   $('#automation-list .favorite').on('click', function () {
+//     $(this).toggleClass('active');
+//   });
 
-  // Configure/customize these variables.
-  var showChar = 150; // How many characters are shown by default
-  var ellipsestext = "...";
-  var moretext = "Read more";
-  var lesstext = "Read less";
+//   // Configure/customize these variables.
+//   var showChar = 150; // How many characters are shown by default
+//   var ellipsestext = "...";
+//   var moretext = "Read more";
+//   var lesstext = "Read less";
 
-  $("#automation-list p:not(.category)").each(function () {
-    var content = $(this).html();
+//   $("#automation-list p:not(.category)").each(function () {
+//     var content = $(this).html();
 
-    if (content.length > showChar) {
-      var c = content.substr(0, showChar);
-      var h = content.substr(showChar, content.length - showChar);
+//     if (content.length > showChar) {
+//       var c = content.substr(0, showChar);
+//       var h = content.substr(showChar, content.length - showChar);
 
-      var html =
-        c +
-        '<span class="moreellipses">' +
-        ellipsestext +
-        '&nbsp;</span><span class="morecontent"><span>' +
-        h +
-        '</span>&nbsp;&nbsp;<a href="" class="morelink">' +
-        moretext +
-        "</a></span>";
+//       var html =
+//         c +
+//         '<span class="moreellipses">' +
+//         ellipsestext +
+//         '&nbsp;</span><span class="morecontent"><span>' +
+//         h +
+//         '</span>&nbsp;&nbsp;<a href="" class="morelink">' +
+//         moretext +
+//         "</a></span>";
 
-      $(this).html(html);
-    }
-  });
+//       $(this).html(html);
+//     }
+//   });
 
-  $(".morelink").click(function () {
-    if ($(this).hasClass("less")) {
-      $(this).removeClass("less");
-      $(this).html(moretext);
-      $(this).prev().css('display', 'none');
-    } else {
-      $(this).addClass("less");
-      $(this).html(lesstext);
-      $(this).prev().css('display', 'inline');
-    }
-    $(this)
-      .parent()
-      .prev()
-      .toggle();
-    return false;
-  });
+//   $(".morelink").click(function () {
+//     if ($(this).hasClass("less")) {
+//       $(this).removeClass("less");
+//       $(this).html(moretext);
+//       $(this).prev().css('display', 'none');
+//     } else {
+//       $(this).addClass("less");
+//       $(this).html(lesstext);
+//       $(this).prev().css('display', 'inline');
+//     }
+//     $(this)
+//       .parent()
+//       .prev()
+//       .toggle();
+//     return false;
+//   });
 
-});
+// });
 
-//toogle add task tab
-$(function () {
-  $('#add-tasks-tab').on('show.bs.tab', function (e) {
-    $('.hl_contact-details-right-tabs-bottom, .hl_contact-details-right-tabs').addClass('expand');
-  });
-  $('#add-tasks-tab').on('hide.bs.tab', function (e) {
-    $('.hl_contact-details-right-tabs-bottom, .hl_contact-details-right-tabs').removeClass('expand');
-  });
-});
+// //toogle add task tab
+// $(function () {
+//   $('#add-tasks-tab').on('show.bs.tab', function (e) {
+//     $('.hl_contact-details-right-tabs-bottom, .hl_contact-details-right-tabs').addClass('expand');
+//   });
+//   $('#add-tasks-tab').on('hide.bs.tab', function (e) {
+//     $('.hl_contact-details-right-tabs-bottom, .hl_contact-details-right-tabs').removeClass('expand');
+//   });
+// });
 
 
 //Phone Dropdown

@@ -48,6 +48,7 @@ export default {
         { src: 'https://use.fontawesome.com/releases/v5.0.13/js/all.js', type: 'text/javascript'},
         // Main JS
         { src: '/js/scripts.min.js', type: 'text/javascript', charset: 'utf-8'},
+        { src: '/js/main/main.js', type: 'text/javascript', charset: 'utf-8'},
       ]
     }
   }

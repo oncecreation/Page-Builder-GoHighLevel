@@ -1,10 +1,14 @@
 <template>
   <div>
-    <PageBuilderOptions :columns="columns" @add-column="addColumn"></PageBuilderOptions>
+    <PageBuilderOptions :columns="columns" :columnDrawerOpen="columnDrawerOpen"></PageBuilderOptions>
     <div class="hl_page-creator--content" id="page-main">
       <Container @drop="onDrop">
         <Draggable v-for="element in pageElements" :key="element.id">
-          <Section :index="element.id" @delete-section="deleteSection" @add-section="addSection"></Section>
+          <Section :index="element.id"
+            @delete-section="deleteSection"
+            @add-section="addSection"
+            @open-drawer="openDrawer"
+          ></Section>
         </Draggable>
       </Container>
     </div>
@@ -55,12 +59,20 @@ export default {
         {id: 'col-left', name: 'Left Sidebar'},
         {id: 'col-right', name: 'Right Sidebar'}
       ],
-      pageElements: [{id: 0, meta: 'Initial Section'}]
+      pageElements: [{id: 0, meta: 'Initial Section'}],
+      columnDrawerOpen: false,
     }
   },
   methods: {
     onDrop(dropResult) {
       this.pageElements = applyDrag(this.pageElements, dropResult);
+    },
+    openDrawer(type) {
+      switch(type){
+        case 'selectColumn':
+          this.columnDrawerOpen = !this.columnDrawerOpen
+          break
+      }
     },
     addSection() {
       let lastIndex = Math.max.apply(null, this.pageElements.map(elem => elem.id))
@@ -70,9 +82,6 @@ export default {
       if(!index) { return }
       this.pageElements = this.pageElements.filter(element => element.id !== index)
     },
-    addColumn(columnType) {
-      console.log(columnType)
-    }
   }
 }
 </script>

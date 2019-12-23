@@ -15,9 +15,9 @@
     </div>
     <span class="add-new-section" @click="$emit('add-section')" data-tooltip="tooltip" data-placement="bottom" title="Add New Section"><i class="icon icon-plus"></i></span>
     <div href="#" class="new-row-blank" v-if="noRow">
-      <span class="btn btn-light5 btn-slim" @click="noRow = !noRow">Add New Row</span>
+      <span class="btn btn-light5 btn-slim"@click="addRow(index)">Add New Row</span>
     </div>
-    <Row v-if="!noRow" columns="col-2"></Row>
+    <Row v-if="!noRow" :numColumns="numColumns"></Row>
   </section>
 </template>
 
@@ -34,9 +34,35 @@
         noRow: true
       }
     },
+    mounted() {
+      this.$root.$on('add-column', data => {
+          this.addColumn(data)
+      });
+
+      this.$root.$on('add-element', (data, id) => {
+        console.log('element add', id)
+      })
+    },
     methods: {
-      toggleRow() {
-        console.log(this.noRow)
+      addRow(index) {
+        this.$emit('open-drawer', 'selectColumn')
+      },
+      addColumn(type) {
+       this.noRow = false
+        switch(type) {
+          case 'col-1':
+            this.numColumns = 1
+            break
+          case 'col-2':
+            this.numColumns = 2
+            break
+          case 'col-3':
+            this.numColumns = 3
+            break
+          default:
+            this.numColumns = 1
+            break
+        }
       }
     }
   }
