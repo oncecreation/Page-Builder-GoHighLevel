@@ -366,7 +366,7 @@
                 <div class="add-row-body">
                   <Container class="row-cards" tag="div">
                       <Draggable v-for="column in columns" :key="column.name" class="row-card" tag="div">
-                        <div @click="$root.$emit('add-column', column.id); columnDrawerOpen = false;"">
+                        <div @click="$root.$emit('add-column', trackChangeId + '-' +column.id); columnDrawerOpen = false;"">
                           <div class="icon">
                             <i class="fas fa-columns"></i>
                           </div>
@@ -575,7 +575,7 @@
                   <div class="element-group">
                     <h4>Text</h4>
                     <div class="element-cards">
-                      <div class="element-card" @click="$root.$emit('add-heading'); elementsDrawerOpen = false;">
+                      <div class="element-card" @click="$root.$emit('add-heading', trackChangeId); elementsDrawerOpen = false;">
                         <div class="icon">
                           <i class="fas fa-heading"></i>
                         </div>
@@ -603,7 +603,7 @@
                   </div>
                   <div class="element-group">
                     <h4>Media</h4>
-                    <div class="element-cards" @click="$root.$emit('add-image'); elementsDrawerOpen = false;">
+                    <div class="element-cards" @click="$root.$emit('add-image', trackChangeId); elementsDrawerOpen = false;">
                       <div class="element-card">
                         <div class="icon">
                           <i class="fas fa-image"></i>
@@ -1016,14 +1016,17 @@
     data() {
       return {
         columnDrawerOpen: false,
-        elementsDrawerOpen: false
+        elementsDrawerOpen: false,
+        trackChangeId: null
       }
     },
     mounted() {
       this.$root.$on('open-column-drawer', data => {
           this.columnDrawerOpen = true
+          this.trackChangeId = data
       });
       this.$root.$on('open-elements-drawer', data => {
+        this.trackChangeId = data
         this.elementsDrawerOpen = true
       })
     }

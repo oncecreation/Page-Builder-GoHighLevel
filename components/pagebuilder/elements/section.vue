@@ -15,58 +15,57 @@
     </div>
     <span class="add-new-section" @click="$emit('add-section')" data-tooltip="tooltip" data-placement="bottom" title="Add New Section"><i class="icon icon-plus"></i></span>
     <div href="#" class="new-row-blank" v-if="noRow">
-      <span class="btn btn-light5 btn-slim"@click="addRow(index)">Add New Row</span>
+      <span class="btn btn-light5 btn-slim" @click="trackChangeId=genUID();$root.$emit('open-column-drawer', trackChangeId);">Add New Row</span>
     </div>
-    <Row v-if="!noRow" :numColumns="numColumns"></Row>
+    <Container @drop="onDrop">
+        <Draggable v-for="(node, idx) in nodes" :key="idx">
+           <Row @add-row="addRow" v-if="!noRow" :numColumns="node.numColumns" />
+      </Draggable>
+    </Container>
   </section>
 </template>
 
 <script>
+  import { Container, Draggable } from 'vue-smooth-dnd'
+
   import Row from './row.vue'
 
   export default {
     props: ['index'],
     components: {
       Row,
+      Container,
+      Draggable
     },
     data() {
       return {
-        noRow: true
+        noRow: true,
+        nodes: [],
+        trackChangeId: null
       }
     },
     mounted() {
       this.$root.$on('add-column', data => {
-          this.addColumn(data)
+        let newData = data.split('-')
+        if(newData[0] == this.trackChangeId) {
+          this.noRow = false
+          let lastIndex = this.nodes.length ? Math.max.apply(null, this.nodes.map(elem => elem.id)) : -1
+          this.nodes.push({type: 'row', numColumns: parseInt(newData[2]), id: lastIndex + 1 })
+        }
       });
-
-      this.$root.$on('add-element', (data, id) => {
-        console.log('element add', id)
-      })
     },
     methods: {
-      addRow(index) {
-        this.$root.$emit('open-column-drawer', 'selectColumn')
+      addRow(){
+        this.trackChangeId = this.genUID()
+        this.$root.$emit('open-column-drawer', this.trackChangeId);
       },
-      addColumn(type) {
-       this.noRow = false
-        switch(type) {
-          case 'col-1':
-            this.numColumns = 1
-            break
-          case 'col-2':
-            this.numColumns = 2
-            break
-          case 'col-3':
-            this.numColumns = 3
-            break
-          case 'col-4':
-            this.numColumns = 4
-            break
-          default:
-            this.numColumns = 1
-            break
-        }
-      }
+      onDrop(dropResult) {
+        console.log(this.nodes, 'before')
+        this.nodes = this.applyDrag(this.nodes, dropResult);
+        console.log(this.nodes, 'after')
+        this.$forceUpdate();
+
+      },
     }
   }
 </script>

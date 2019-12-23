@@ -1,34 +1,47 @@
 <template>
   <div class="hl_page-creator--column">
     <div href="#" class="new-element-blank" v-if="!nodes.length">
-      <span class="btn btn-light6 btn-slim" @click="$root.$emit('open-elements-drawer')">Add New Element</span>
+      <span class="btn btn-light6 btn-slim" @click="trackChangeId=genUID();$root.$emit('open-elements-drawer', trackChangeId);">Add New Element</span>
     </div>
     <!-- Column can have heading, image. -->
-     <Heading v-if="nodes.length"></Heading>
+     <div v-for="node in nodes" :key="node.id">
+      <component :is="node.type"/>
+    </div>
   </div>
 </template>
 
 <script>
-  import Image from './image.vue'
+  import ImageElement from './image-element.vue'
   import Heading from './heading.vue'
   export default {
     components: {
       Heading,
-      Image,
+      ImageElement,
     },
     data(){
       return {
+        trackChangeId: null,
         nodes: []
       }
     },
     mounted(){
       this.$root.$on('add-heading', data => {
-          this.nodes.push(20)
+          if(data == this.trackChangeId) {
+            this.nodes.push({ 'type': 'heading', value: 'Heading', id: data})
+          }
       });
 
       this.$root.$on('add-image', data => {
-          console.log('add image')
+          if(data == this.trackChangeId) {
+            this.nodes.push({ 'type': 'ImageElement', value: 'Image', id: data})
+          }
       });
+    },
+    methods:{
+      bat: function(ev){
+        console.log(ev)
+        window.cat = ev
+      }
     }
   }
 </script>

@@ -3,12 +3,11 @@
     <PageBuilderOptions :columns="columns"></PageBuilderOptions>
     <div class="hl_page-creator--content" id="page-main">
       <Container @drop="onDrop">
-        <Draggable v-for="element in virtualDom" :key="element.id">
+        <Draggable v-for="element in nodes" :key="element.id">
           <Section
             @delete-section="deleteSection"
             @add-section="addSection"
             :index="element.id"
-            :nodes="element.nodes"
           ></Section>
         </Draggable>
       </Container>
@@ -21,24 +20,8 @@
 import { Container, Draggable } from 'vue-smooth-dnd'
 import Section from './elements/section.vue'
 import Row from './elements/row.vue'
-import Image from './elements/image.vue'
 import Column from './elements/column.vue'
-import Heading from './elements/heading.vue'
 import PageBuilderOptions from './options.vue'
-
-const applyDrag = (arr, dragResult) => {
-  const { removedIndex, addedIndex, payload } = dragResult
-  if (removedIndex === null && addedIndex === null) return arr
-  const result = [...arr]
-  let itemToAdd = payload
-  if (removedIndex !== null) {
-    itemToAdd = result.splice(removedIndex, 1)[0]
-  }
-  if (addedIndex !== null) {
-    result.splice(addedIndex, 0, itemToAdd)
-  }
-  return result
-}
 
 export default {
   components: {
@@ -59,25 +42,22 @@ export default {
         {id: 'col-left', name: 'Left Sidebar'},
         {id: 'col-right', name: 'Right Sidebar'}
       ],
-      virtualDom: [
+      nodes: [
         {id: 0, meta: 'Initial Section', nodes: []}
       ],
     }
   },
-  mounted(){
-
-  },
   methods: {
     onDrop(dropResult) {
-      this.virtualDom = applyDrag(this.virtualDom, dropResult);
+      this.nodes = this.applyDrag(this.nodes, dropResult);
     },
     addSection() {
-      let lastIndex = Math.max.apply(null, this.virtualDom.map(elem => elem.id))
-      this.virtualDom.push({id: lastIndex + 1})
+      let lastIndex = Math.max.apply(null, this.nodes.map(elem => elem.id))
+      this.nodes.push({id: lastIndex + 1})
     },
     deleteSection(index) {
       if(!index) { return }
-      this.virtualDom = this.virtualDom.filter(element => element.id !== index)
+      this.nodes = this.nodes.filter(element => element.id !== index)
     },
   }
 }
@@ -86,5 +66,10 @@ export default {
 <style>
   #page-main {
     padding-left: 70px;
+  }
+
+  .smooth-dnd-container {
+    min-height: 0px;
+     min-width: 0px; 
   }
 </style>
