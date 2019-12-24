@@ -52,6 +52,7 @@ export default {
     if(this.$storage.get('section')) {
       this.nodes = this.$storage.get('section')
     }
+    window.cat = this;
   },
   methods: {
     onDrop(dropResult) {

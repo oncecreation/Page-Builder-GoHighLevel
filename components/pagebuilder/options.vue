@@ -60,7 +60,7 @@
             <div class="btn-group">
               <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Preview"><i class="far fa-eye"></i><span class="btn-text">Preview</span>
               </button>
-              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Save" @click=""><i class="far fa-save"></i><span class="btn-text">Save</span>
+              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Save" @click="saveChanges"><i class="far fa-save"></i><span class="btn-text">Save</span>
               </button>
             </div>
           </div>
@@ -753,6 +753,9 @@
       },
       getChildPayload(type){
         return `${type}-${this.trackChangeId}`
+      },
+      saveChanges(){
+        alert('Changes Saved to Local Storage')
       }
     },
     mounted() {
