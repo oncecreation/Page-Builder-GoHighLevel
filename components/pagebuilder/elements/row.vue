@@ -13,7 +13,6 @@
       </div>
     </div>
     <span class="add-new-row" @click="$emit('add-row')" data-tooltip="tooltip" data-placement="bottom" title="" data-original-title="Add New Row"><i class="icon icon-plus"></i></span>
-
     <Column v-for="(column, idx) in nodes" :key="idx"></Column>
   </div>
 </template>

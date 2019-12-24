@@ -29,7 +29,7 @@
   import Row from './row.vue'
 
   export default {
-    props: ['index'],
+    props: ['index', 'rows'],
     components: {
       Row,
       Container,
@@ -42,6 +42,12 @@
         trackChangeId: null
       }
     },
+    created(){
+      if(this.rows) {
+        this.nodes = this.rows.nodes
+        this.noRow = false
+      }
+    },
     mounted() {
       this.$root.$on('add-column', data => {
         let newData = data.split('-')
@@ -49,7 +55,7 @@
           this.noRow = false
           let lastIndex = this.nodes.length ? Math.max.apply(null, this.nodes.map(elem => elem.id)) : -1
           this.nodes.push({type: 'row', numColumns: parseInt(newData[2]), id: lastIndex + 1 })
-          this.$emit('rows', this.nodes)
+          this.$emit('add-rows', {nodes: this.nodes, index: this.index})
         }
       });
     },

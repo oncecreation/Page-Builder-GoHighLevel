@@ -9,6 +9,7 @@
             @add-section="addSection"
             @add-rows="addRows"
             :index="element.id"
+            :rows="element.rows"
           ></Section>
         </Draggable>
       </Container>
@@ -52,21 +53,27 @@ export default {
     if(this.$storage.get('section')) {
       this.nodes = this.$storage.get('section')
     }
-    window.cat = this;
   },
   methods: {
+    save(){
+      this.$storage.set('section', this.nodes)
+    },
+    addRows(rows) {
+      this.nodes[rows.index].rows = rows
+      this.save()
+    },
     onDrop(dropResult) {
       this.nodes = this.applyDrag(this.nodes, dropResult);
     },
     addSection() {
       let lastIndex = Math.max.apply(null, this.nodes.map(elem => elem.id))
       this.nodes.push({id: lastIndex + 1})
-      this.$storage.set('section', this.nodes)
+      this.save()
     },
     deleteSection(index) {
       if(!index) { return }
       this.nodes = this.nodes.filter(element => element.id !== index)
-      this.$storage.set('section', this.nodes)
+      this.save()
     },
   }
 }
