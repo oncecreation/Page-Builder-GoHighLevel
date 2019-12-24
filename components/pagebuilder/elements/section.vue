@@ -17,11 +17,9 @@
     <div href="#" class="new-row-blank" v-if="noRow">
       <span class="btn btn-light5 btn-slim" @click="trackChangeId=genUID();$root.$emit('open-column-drawer', trackChangeId);">Add New Row</span>
     </div>
-    <Container @drop="onDrop">
-        <Draggable v-for="(node, idx) in nodes" :key="idx">
+        <div v-for="(node, idx) in nodes" :key="idx">
            <Row @add-row="addRow" v-if="!noRow" :numColumns="node.numColumns" />
-      </Draggable>
-    </Container>
+        </div>
   </section>
 </template>
 
@@ -51,6 +49,7 @@
           this.noRow = false
           let lastIndex = this.nodes.length ? Math.max.apply(null, this.nodes.map(elem => elem.id)) : -1
           this.nodes.push({type: 'row', numColumns: parseInt(newData[2]), id: lastIndex + 1 })
+          this.$emit('rows', this.nodes)
         }
       });
     },
@@ -58,13 +57,6 @@
       addRow(){
         this.trackChangeId = this.genUID()
         this.$root.$emit('open-column-drawer', this.trackChangeId);
-      },
-      onDrop(dropResult) {
-        console.log(this.nodes, 'before')
-        this.nodes = this.applyDrag(this.nodes, dropResult);
-        console.log(this.nodes, 'after')
-        this.$forceUpdate();
-
       },
     }
   }

@@ -44,4 +44,7 @@
 .hl_page-creator--row:hover .add-new-row {
   opacity: 1
 }
+.hl_page-creator--row {
+  margin-bottom:14px !important;
+}
 </style>

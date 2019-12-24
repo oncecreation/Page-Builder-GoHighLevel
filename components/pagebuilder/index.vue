@@ -7,6 +7,7 @@
           <Section
             @delete-section="deleteSection"
             @add-section="addSection"
+            @add-rows="addRows"
             :index="element.id"
           ></Section>
         </Draggable>
@@ -47,6 +48,11 @@ export default {
       ],
     }
   },
+  created () {
+    if(this.$storage.get('section')) {
+      this.nodes = this.$storage.get('section')
+    }
+  },
   methods: {
     onDrop(dropResult) {
       this.nodes = this.applyDrag(this.nodes, dropResult);
@@ -54,10 +60,12 @@ export default {
     addSection() {
       let lastIndex = Math.max.apply(null, this.nodes.map(elem => elem.id))
       this.nodes.push({id: lastIndex + 1})
+      this.$storage.set('section', this.nodes)
     },
     deleteSection(index) {
       if(!index) { return }
       this.nodes = this.nodes.filter(element => element.id !== index)
+      this.$storage.set('section', this.nodes)
     },
   }
 }

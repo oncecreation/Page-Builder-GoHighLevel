@@ -5,6 +5,8 @@
 <script>
   import PageBuilder from '../components/pagebuilder'
   import Vue from 'vue'
+  import {Vue2Storage} from 'vue2-storage'
+
 
   const applyDrag = (arr, dragResult) => {
     const { removedIndex, addedIndex, payload } = dragResult
@@ -26,6 +28,8 @@
       applyDrag,
     }
   })
+
+  Vue.use(Vue2Storage)
 
   export default {
     components: {

@@ -46,28 +46,6 @@
           </div>
           <div class="menu--right">
             <div class="btn-group">
-              <div class="dropdown" id="section-group">
-                <button type="button" class="btn btn-light btn-sm dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" data-tooltip="tooltip" data-placement="top" title="Sections"><i class="fas fa-expand"></i><span class="btn-text">Sections</span>
-                </button>
-                <div class="dropdown-menu">
-                  <div class="nav">
-                    <a class="dropdown-item" data-toggle="tab" href="#add-section">Add Section</a>
-                    <a class="dropdown-item" data-toggle="tab" href="#manage-sections">Manage</a>
-                  </div>
-                </div>
-              </div>
-              <div class="dropdown" id="row-group">
-                <button type="button" class="btn btn-light btn-sm dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" data-tooltip="tooltip" data-placement="top" title="Rows"><i class="fas fa-bars"></i><span class="btn-text">Rows</span>
-                </button>
-                <div class="dropdown-menu">
-                  <div class="nav">
-                    <a class="dropdown-item" data-toggle="tab" href="#add-row">Add Row</a>
-                    <a class="dropdown-item" data-toggle="tab" href="#manage-rows">Manage</a>
-                  </div>
-                </div>
-              </div>
-              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Columns" id="column-group"><i class="fas fa-columns"></i><span class="btn-text">Columns</span>
-              </button>
               <div class="dropdown" id="element-group">
                 <button type="button" class="btn btn-light btn-sm dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" data-tooltip="tooltip" data-placement="top" title="Elements"><i class="fas fa-code"></i><span class="btn-text">Elements</span>
                 </button>
@@ -82,7 +60,7 @@
             <div class="btn-group">
               <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Preview"><i class="far fa-eye"></i><span class="btn-text">Preview</span>
               </button>
-              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Save"><i class="far fa-save"></i><span class="btn-text">Save</span>
+              <button type="button" class="btn btn-light btn-sm" data-tooltip="tooltip" data-placement="top" title="Save" @click=""><i class="far fa-save"></i><span class="btn-text">Save</span>
               </button>
             </div>
           </div>
@@ -90,270 +68,9 @@
       </section>
       <!-- END of .hl_page-creator--main -->
 
-      <section class="hl_page-creator--settings-group">
-        <a href="#" class="close-group" id="close-settings-group"><i class="icon icon-close"></i></a>
-        <div class="hl_settings-group">
-          <div class="tab-content" id="hl_settings-group-tab">
-            <div class="tab-pane fade" id="integrations" role="tabpanel" aria-labelledby="integrations-tab">
-              <h2>Email Integration Settings</h2>
-              <div class="integrations">
-                <div class="text-center">
-                  <h5>Auto Responder Integration</h5>
-                  <p>Here you will be able to hook up your integrations with your auto-responder service...</p>
-                  <p class="not-connected"><i class="icon icon-close"></i> Not Connected</p>
-                </div>
-                <hr>
-                <div class="form-group">
-                  <label>Integrations</label>
-                  <select class="selectpicker" data-width="100%">
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Action</label>
-                  <select class="selectpicker" data-width="100%">
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>List to Add</label>
-                  <select class="selectpicker" data-width="100%">
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab">
-              <h2>SEO Mata Data</h2>
-              <div class="seo">
-                <div class="warning">
-                  <p>Warning: Change the Default SEO Page Title.</p>
-                </div>
-                <div class="form-group">
-                  <label>Title</label>
-                  <input type="text" class="form-control" placeholder="Title">
-                </div>
-                <div class="form-group">
-                  <label>Description</label>
-                  <textarea class="form-control" placeholder="Description" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                  <label>Keywords</label>
-                  <input type="text" class="form-control" placeholder="Keywords" value="clickfunnels, landing page, web site editor">
-                </div>
-                <div class="form-group">
-                  <label>Author</label>
-                  <input type="text" class="form-control" placeholder="Author" value="Your Name">
-                </div>
-                <div class="form-group">
-                  <label>Social Image</label>
-                  <input type="file" placeholder="Social Image">
-                </div>
-                <hr>
-                <h3>SEO Preview</h3>
-                <div class="seo-card --seo1">
-                  <h4 class="seo-title">My Awesome Landing Page - Powered by ClickFunnels.com</h4>
-                  <p><a href="#" class="seo-link">http://yourwebsite.com/would-be-here</a>
-                  </p>
-                  <p class="seo-description">description for your awesome landing page</p>
-                </div>
-                <div class="seo-card --seo2">
-                  <h4 class="seo-title">My Awesome Landing Page - Powered by ClickFunnels.com</h4>
-                  <p class="seo-description">description for your awesome landing page</p>
-                  <p><a href="#" class="seo-link">http://yourwebsite.com/would-be-here</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="tracking" role="tabpanel" aria-labelledby="tracking-tab">
-              <h2>Tracking Code</h2>
-              <div class="tracking">
-                <div class="form-group">
-                  <label>Add HTML/Javascript</label>
-                  <textarea class="form-control" placeholder="Add HTML/Javascript here..." rows="5"></textarea>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="css" role="tabpanel" aria-labelledby="css-tab">
-              <h2>Custom CSS</h2>
-              <div class="css">
-                <div class="form-group">
-                  <label>Add CSS</label>
-                  <textarea class="form-control" placeholder="Add custo CSS here..." rows="5"></textarea>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="background" role="tabpanel" aria-labelledby="background-tab">
-              <h2>Background</h2>
-              <div class="background">
-                <div class="form-group">
-                  <label>Background Image</label>
-                  <input type="file">
-                </div>
-                <div class="form-group">
-                  <label>Color</label>
-                  <input type="text" class="form-control" placeholder="Color">
-                </div>
-                <div class="form-group">
-                  <label>Background Video</label>
-                  <select class="selectpicker" data-width="100%">
-                    <option>Off</option>
-                    <option>On</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="typography" role="tabpanel" aria-labelledby="typography-tab">
-              <h2>Typography</h2>
-              <div class="typography">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, expedita. Porro, ea magni doloremque et fuga optio laudantium? Mollitia esse aliquam enim facilis eius natus laborum dolor laboriosam numquam sapiente?
-                </p>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="general-tab">
-              <h2>General Settings</h2>
-              <div class="general">
-                <div class="form-group">
-                  <label>On Submit Go To</label>
-                  <input type="text" class="form-control" placeholder="On Submit Go To">
-                </div>
-                <div class="form-group">
-                  <label>Digital Assets</label>
-                  <select class="selectpicker" data-width="100%">
-                    <option>- no asset / download -</option>
-                    <option>Facebook Strategy Guide</option>
-                    <option>Anurli</option>
-                    <option>Horatio D Medium</option>
-                    <option>Horatio D Light</option>
-                    <option>Patient Rush Favicon</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Affiliate Badge</label>
-                  <select class="selectpicker" data-width="100%">
-                    <option>Hide</option>
-                    <option>Show</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Search Engines</label>
-                  <select class="selectpicker" data-width="100%">
-                    <option>Hide</option>
-                    <option>Show</option>
-                  </select>
-                </div>
-                <button type="button" class="btn btn-success btn-block">Save Page as Template</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       <!-- END of .hl_page-creator--settings-group -->
 
-      <section class="hl_page-creator--sections-group">
-        <a href="#" class="close-group" id="close-section-group"><i class="icon icon-close"></i></a>
-        <div class="hl_section-group">
-          <div class="tab-content" id="hl_section-group-tab">
-            <div class="tab-pane fade" id="add-section" role="tabpanel" aria-labelledby="add-section-tab">
-              <div class="add-section">
-                <h2>Add Sections</h2>
-                <div class="add-section-body">
-                  <div class="section-cards">
-                    <div class="section-card">
-                      <div class="icon">
-                        <i class="far fa-square"></i>
-                      </div>
-                      <h5>Full Width</h5>
-                    </div>
-                    <div class="section-card">
-                      <div class="icon">
-                        <i class="far fa-square"></i>
-                      </div>
-                      <h5>Wide</h5>
-                    </div>
-                    <div class="section-card">
-                      <div class="icon">
-                        <i class="far fa-square"></i>
-                      </div>
-                      <h5>Medium</h5>
-                    </div>
-                    <div class="section-card">
-                      <div class="icon">
-                        <i class="far fa-square"></i>
-                      </div>
-                      <h5>Small</h5>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="manage-sections" role="tabpanel" aria-labelledby="manage-sections-tab">
-              <div class="manage-sections">
-                <h2>Manage Sections</h2>
-                <div class="sections-section-group-wrap">
-                  <div class="sections-section-group">
-                    <h3>All Sections</h3>
-                    <ul class="sections">
-                      <li>
-                        <h4>Section</h4>
-                        <div class="actions">
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
-                        </div>
-                      </li>
-                      <li>
-                        <h4>Section</h4>
-                        <div class="actions">
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
-                        </div>
-                      </li>
-                      <li>
-                        <h4>Section</h4>
-                        <div class="actions">
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
-                        </div>
-                      </li>
-                      <li>
-                        <h4>Section</h4>
-                        <div class="actions">
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
-                        </div>
-                      </li>
-                      <li>
-                        <h4>Section</h4>
-                        <div class="actions">
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="fas fa-arrows-alt-v"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-eye"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-copy"></i></a>
-                          <a href="#" class="btn btn-square-sm btn-light4"><i class="far fa-trash-alt"></i></a>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    
       <!-- END of .hl_page-creator--sections-group -->
 
       <section class="hl_page-creator--rows-group" :class="{'active': columnDrawerOpen}">
@@ -575,12 +292,14 @@
                   <div class="element-group">
                     <h4>Text</h4>
                     <div class="element-cards">
-                      <div class="element-card" @click="$root.$emit('add-heading', trackChangeId); elementsDrawerOpen = false;">
-                        <div class="icon">
-                          <i class="fas fa-heading"></i>
-                        </div>
-                        <h5>Headline</h5>
-                      </div>
+                      <Container behaviour="copy" :get-child-payload="() => getChildPayload('heading')" group-name="1" :get-ghost-parent="getGhostParent"  @drag-start="onDragStart">            
+                        <Draggable :key="'heading-' + trackChangeId" tag="div" class="element-card" @click="$root.$emit('add-heading', trackChangeId); elementsDrawerOpen = false;">
+                            <div class="icon">
+                              <i class="fas fa-heading"></i>
+                            </div>
+                            <h5>Headline</h5>
+                        </Draggable>
+                      </Container>
                       <div class="element-card">
                         <div class="icon">
                           <i class="fas fa-font"></i>
@@ -603,13 +322,15 @@
                   </div>
                   <div class="element-group">
                     <h4>Media</h4>
-                    <div class="element-cards" @click="$root.$emit('add-image', trackChangeId); elementsDrawerOpen = false;">
-                      <div class="element-card">
+                    <div class="element-cards">                          
+                      <Container behaviour="copy" :get-child-payload="() => getChildPayload('image')" group-name="1" :get-ghost-parent="getGhostParent"  @drag-start="onDragStart">            
+                      <Draggable :key="'heading-' + trackChangeId" tag="div" class="element-card" @click="$root.$emit('add-image', trackChangeId); elementsDrawerOpen = false;">
                         <div class="icon">
                           <i class="fas fa-image"></i>
                         </div>
                         <h5>Image</h5>
-                      </div>
+                      </Draggable>
+                      </Container>
                       <div class="element-card">
                         <div class="icon">
                           <i class="fas fa-images"></i>
@@ -636,6 +357,7 @@
                       </div>
                     </div>
                   </div>
+                  </Container>
                   <div class="element-group">
                     <h4>Form</h4>
                     <div class="element-cards">
@@ -1020,6 +742,19 @@
         trackChangeId: null
       }
     },
+    methods: {
+      getGhostParent() {
+        return document.body;
+      },
+      onDragStart(){
+        console.log('dragging elements')
+        this.elementsDrawerOpen = false
+        this.columnDrawerOpen = false
+      },
+      getChildPayload(type){
+        return `${type}-${this.trackChangeId}`
+      }
+    },
     mounted() {
       this.$root.$on('open-column-drawer', data => {
           this.columnDrawerOpen = true
@@ -1035,5 +770,9 @@
 <style>
   .hl_wrapper--inner {
     padding-bottom: 0px !important;
+  }
+
+  .hl_page-creator--element-group .element-group .element-cards .element-card {
+    min-width: 144px !important;
   }
 </style>
